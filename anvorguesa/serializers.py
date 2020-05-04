@@ -13,13 +13,9 @@ class IngredienteSerializer(serializers.HyperlinkedModelSerializer):
         result["nombre"]=instance.nombre
         result["descripcion"]=instance.descripcion
         return result
-# class IngEnHAmburguesaSerializer(serializers.Serializer):
-#     class Meta:
-#         model=Ingrediente
-#         fields=('id',)
+
 
 class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
-    ingredientes=IngEnHAmburguesaSerializer
     class Meta:
         model=Hamburguesa
         fields=('url','id','nombre','precio','descripcion','img','ingredientes')
