@@ -13,7 +13,7 @@ class Hamburguesa(models.Model):
     nombre=models.CharField(max_length=200)
     precio = models.IntegerField(default=0)
     descripcion=models.TextField(max_length=1000)
-    img=models.URLField(max_length = 200) 
+    imagen=models.URLField(max_length = 200) 
     ingredientes=models.ManyToManyField(Ingrediente,blank=True,default='')
 
     def __str__(self):

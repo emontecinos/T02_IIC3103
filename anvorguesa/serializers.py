@@ -18,7 +18,7 @@ class IngredienteSerializer(serializers.HyperlinkedModelSerializer):
 class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model=Hamburguesa
-        fields=('url','id','nombre','precio','descripcion','img','ingredientes')
+        fields=('url','id','nombre','precio','descripcion','imagen','ingredientes')
 
     def to_representation(self,instance):
         # Si solo fuera una lista con los urls de los ingredientes, se hace solo y puedo borrar el metodo to_representation
@@ -30,7 +30,7 @@ class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
         result["nombre"]=instance.nombre
         result["precio"]=instance.precio
         result["descripcion"]=instance.descripcion
-        result["img"]=instance.img
+        result["imagen"]=instance.imagen
         for ingrediente in instance.ingredientes.all():
             ings=dict()
             ings["path"]="https://anvorguesaapp.herokuapp.com/ingrediente/{}".format(ingrediente.id)
