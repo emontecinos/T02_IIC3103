@@ -6,11 +6,17 @@ class IngredienteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model=Ingrediente
         fields=('url','id','nombre','descripcion')
-
-class IngEnHAmburguesaSerializer(serializers.Serializer):
-    class Meta:
-        model=Ingrediente
-        fields=('id',)
+    
+    def to_representation(self,instance):
+        result=dict()
+        result["id"]=instance.id
+        result["nombre"]=instance.nombre
+        result["descripcion"]=instance.descripcion
+        return result
+# class IngEnHAmburguesaSerializer(serializers.Serializer):
+#     class Meta:
+#         model=Ingrediente
+#         fields=('id',)
 
 class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
     ingredientes=IngEnHAmburguesaSerializer
@@ -19,6 +25,7 @@ class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
         fields=('url','id','nombre','precio','descripcion','img','ingredientes')
 
     def to_representation(self,instance):
+        # Si solo fuera una lista con los urls de los ingredientes, se hace solo y puedo borrar el metodo to_representation
         result = dict()
         
         ing_list=[]
