@@ -30,7 +30,7 @@ class HamburguesaSerializer(serializers.HyperlinkedModelSerializer):
         result["img"]=instance.img
         for ingrediente in instance.ingredientes.all():
             ings=dict()
-            ings["path"]="https://anvorguesaapp.herokuapp.com/{}".format(ingrediente.id)
+            ings["path"]="https://anvorguesaapp.herokuapp.com/ingrediente/{}".format(ingrediente.id)
             ing_list.append(ings)
         result["ingredientes"]=ing_list
         return result
