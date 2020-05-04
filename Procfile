@@ -1,1 +1,1 @@
-web: gunicorn anvorguesaapp.wsgi --log-file -
+web: gunicorn anvsite.wsgi --log-file -
